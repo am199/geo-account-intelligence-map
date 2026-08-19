@@ -1,0 +1,226 @@
+<template>
+    <div class="geo-page">
+
+
+        <!-- MAIN CARD -->
+        <div class="map-card">
+
+        
+            <!-- CONTENT -->
+            <div class="map-content">
+
+                <!-- SIDEBAR -->
+                <aside class="sidebar">
+
+                    <div class="sidebar-title">
+                        Map Filters
+                    </div>
+
+                    <!-- INDUSTRY -->
+                    <div class="filter-group">
+                        <label for="industry">Industry</label>
+
+                        <select
+                            id="industry"
+                            class="filter-select"
+                            value={selectedIndustry}
+                            onchange={handleIndustryChange}>
+
+                            <template for:each={industryOptions} for:item="option">
+                                <option
+                                    key={option.value}
+                                    value={option.value}>
+                                    {option.label}
+                                </option>
+                            </template>
+
+                        </select>
+                    </div>
+
+                    <!-- OPPORTUNITY STAGE -->
+                    <div class="filter-group">
+                        <label for="stage">Opportunity Stage</label>
+
+                        <select
+                            id="stage"
+                            class="filter-select"
+                            value={selectedStage}
+                            onchange={handleStageChange}>
+
+                            <template for:each={stageOptions} for:item="option">
+                                <option
+                                    key={option.value}
+                                    value={option.value}>
+                                    {option.label}
+                                </option>
+                            </template>
+
+                        </select>
+                    </div>
+
+                    <!-- OPPORTUNITY OWNER -->
+                    <div class="filter-group">
+                        <label for="owner">Opportunity Owner</label>
+
+                        <select
+                            id="owner"
+                            class="filter-select"
+                            value={selectedOwner}
+                            onchange={handleOwnerChange}>
+
+                            <template for:each={ownerOptions} for:item="option">
+                                <option
+                                    key={option.value}
+                                    value={option.value}>
+                                    {option.label}
+                                </option>
+                            </template>
+
+                        </select>
+                    </div>
+
+                    <!-- RADIUS -->
+                    <div class="filter-group">
+                        <label for="radius">Radius (miles)</label>
+
+                        <input
+                            id="radius"
+                            class="radius-input"
+                            type="number"
+                            min="0"
+                            step="1"
+                            value={radius}
+                            placeholder="Leave blank for all"
+                            onchange={handleRadiusChange} />
+
+                        <div class="field-help">
+                            Leave blank or use 0 to show all accounts.
+                            Radius is measured from the current map center.
+                        </div>
+                    </div>
+
+                    <!-- ACTIONS -->
+                    <div class="button-row">
+
+                        <button
+                            class="apply-button"
+                            onclick={handleApplyFilters}
+                            disabled={loading}>
+
+                            <template if:true={loading}>
+                                Loading...
+                            </template>
+
+                            <template if:false={loading}>
+                                Apply Filters
+                            </template>
+
+                        </button>
+
+                        <button
+                            class="reset-button"
+                            onclick={handleReset}
+                            disabled={loading}>
+
+                            Reset
+
+                        </button>
+
+                    </div>
+
+                    <!-- ERROR -->
+                    <template if:true={errorMessage}>
+                        <div class="error-box">
+                            {errorMessage}
+                        </div>
+                    </template>
+
+                    <!-- SUMMARY -->
+                    <div class="summary-section">
+
+                        <div class="summary-card">
+                            <span class="summary-label">Accounts</span>
+                            <span class="summary-value">{accountCount}</span>
+                        </div>
+
+                        <div class="summary-card">
+                            <span class="summary-label">Open Opportunities</span>
+                            <span class="summary-value">{openOpportunityCount}</span>
+                        </div>
+
+                        <div class="summary-card">
+                            <span class="summary-label">Pipeline</span>
+                            <span class="summary-value">
+                                {formattedPipeline}
+                            </span>
+                        </div>
+
+                    </div>
+
+                    <!-- LEGEND -->
+                    <div class="legend">
+
+                        <div class="legend-title">
+                            Opportunity Signal
+                        </div>
+
+                        <div class="legend-item">
+                            <span class="legend-dot high"></span>
+                            <span>High</span>
+                        </div>
+
+                        <div class="legend-item">
+                            <span class="legend-dot medium"></span>
+                            <span>Medium</span>
+                        </div>
+
+                        <div class="legend-item">
+                            <span class="legend-dot low"></span>
+                            <span>Low</span>
+                        </div>
+
+                    </div>
+
+                </aside>
+
+                <!-- MAP -->
+                <main class="map-wrapper">
+
+                    <div
+                        class="map-container"
+                        lwc:dom="manual">
+                    </div>
+
+                    <!-- LOADING -->
+                    <template if:true={loading}>
+                        <div class="map-loading">
+                            <div class="spinner"></div>
+                            <span>Loading account intelligence...</span>
+                        </div>
+                    </template>
+
+                    <!-- NO RESULTS -->
+                    <template if:true={showNoResults}>
+                        <div class="no-results">
+
+                            <div class="no-results-icon">
+                                ◇
+                            </div>
+
+                            <h3>No accounts found</h3>
+
+                            <p>
+                                Try changing the filters or increasing the radius.
+                            </p>
+
+                        </div>
+                    </template>
+
+                </main>
+
+            </div>
+
+        </div>
+
+    </div>
+</template>

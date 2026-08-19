@@ -1,0 +1,27 @@
+<template>
+    <section class="panel">
+        <div class="inline">
+            <lightning-combobox label="Object" value={objectApiName} options={objectOptions} onchange={handleObject}></lightning-combobox>
+            <lightning-input label="Master record Id" value={masterRecordId} onchange={handleMaster}></lightning-input>
+            <lightning-input label="Duplicate record Ids" value={duplicateIdsText} onchange={handleDuplicates}></lightning-input>
+        </div>
+
+        <div class="actions">
+            <lightning-button label="Preview Impact" onclick={previewImpact}></lightning-button>
+            <lightning-button variant="brand" label="Execute Merge" onclick={executeMerge}></lightning-button>
+        </div>
+
+        <template if:true={impact}>
+            <div class="impact">
+                <p>Opportunities: {impact.opportunityCount}</p>
+                <p>Pipeline amount: {impact.opportunityAmount}</p>
+                <p>Cases: {impact.caseCount}</p>
+                <p>Contacts: {impact.contactCount}</p>
+            </div>
+        </template>
+
+        <template if:true={message}>
+            <p>{message}</p>
+        </template>
+    </section>
+</template>

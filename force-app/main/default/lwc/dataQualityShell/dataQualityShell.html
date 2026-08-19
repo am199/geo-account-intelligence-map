@@ -1,0 +1,41 @@
+<template>
+    <lightning-card title="Data Quality Intelligence Cloud" icon-name="standard:data_mapping">
+        <div class="shell">
+            <lightning-tabset variant="scoped">
+                <lightning-tab label="Import">
+                    <c-csv-uploader onfileuploaded={handleFileUploaded}></c-csv-uploader>
+                    <template if:true={contentVersionId}>
+                        <c-field-mapper
+                            content-version-id={contentVersionId}
+                            object-api-name={objectApiName}
+                            onobjectchange={handleObjectChange}
+                            onimportstarted={handleImportStarted}>
+                        </c-field-mapper>
+                    </template>
+                </lightning-tab>
+                <lightning-tab label="Monitor">
+                    <c-import-progress-tracker import-id={importId}></c-import-progress-tracker>
+                </lightning-tab>
+                <lightning-tab label="Duplicates">
+                    <c-duplicate-workbench onselected={handleDuplicateSelected}></c-duplicate-workbench>
+                </lightning-tab>
+                <lightning-tab label="Merge">
+                    <c-merge-wizard
+                        object-api-name={selectedDuplicate.objectApiName}
+                        master-record-id={selectedDuplicate.masterRecordId}
+                        duplicate-record-ids={selectedDuplicate.duplicateRecordIds}>
+                    </c-merge-wizard>
+                </lightning-tab>
+                <lightning-tab label="Errors">
+                    <c-error-resolution-panel></c-error-resolution-panel>
+                </lightning-tab>
+                <lightning-tab label="Analytics">
+                    <c-analytics-dashboard></c-analytics-dashboard>
+                </lightning-tab>
+                <lightning-tab label="AI">
+                    <c-ai-investigator-panel></c-ai-investigator-panel>
+                </lightning-tab>
+            </lightning-tabset>
+        </div>
+    </lightning-card>
+</template>

@@ -1,0 +1,24 @@
+<template>
+    <section class="panel">
+        <lightning-textarea label="Investigation question" value={question} onchange={handleQuestion}></lightning-textarea>
+        <div class="inline">
+            <lightning-combobox label="Object" value={objectApiName} options={objectOptions} onchange={handleObject}></lightning-combobox>
+            <lightning-input label="Record Id" value={recordId} onchange={handleRecord}></lightning-input>
+        </div>
+        <div class="actions">
+            <lightning-button variant="brand" label="Investigate" onclick={investigate}></lightning-button>
+        </div>
+
+        <template if:true={response}>
+            <article class="result">
+                <p><strong>{response.summary}</strong></p>
+                <template for:each={response.groundingFacts} for:item="fact">
+                    <p key={fact}>{fact}</p>
+                </template>
+                <template for:each={response.recommendedActions} for:item="action">
+                    <p key={action}>Action: {action}</p>
+                </template>
+            </article>
+        </template>
+    </section>
+</template>

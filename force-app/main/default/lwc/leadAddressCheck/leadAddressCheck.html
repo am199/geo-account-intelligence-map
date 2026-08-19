@@ -1,0 +1,19 @@
+<template>
+    <lightning-quick-action-panel header="Lead Address Check">
+        <template if:true={isLoading}>
+            <lightning-spinner alternative-text="Checking address..." size="medium"></lightning-spinner>
+        </template>
+
+        <template if:true={hasError}>
+            <div class="slds-text-color_error slds-p-vertical_small">
+                Please fill Street, City, State, Postal Code, and Country on the Lead before continuing.
+            </div>
+        </template>
+
+        <template if:true={isValid}>
+            <div class="slds-p-vertical_small">
+                Address looks good. Redirecting...
+            </div>
+        </template>
+    </lightning-quick-action-panel>
+</template>

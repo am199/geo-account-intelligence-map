@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Investment_Stage_Focus__c</fullName>
+    <label>Investment Stage Focus</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Seed</fullName>
+                <default>false</default>
+                <label>Seed</label>
+            </value>
+            <value>
+                <fullName>Series A</fullName>
+                <default>false</default>
+                <label>Series A</label>
+            </value>
+            <value>
+                <fullName>Series B</fullName>
+                <default>false</default>
+                <label>Series B</label>
+            </value>
+            <value>
+                <fullName>Series C+</fullName>
+                <default>false</default>
+                <label>Series C+</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

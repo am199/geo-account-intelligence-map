@@ -1,0 +1,670 @@
+<template>
+
+    <lightning-card
+        title="Smart Document Generator"
+        icon-name="standard:document">
+
+        <div class="generator-container">
+
+            <!-- ========================================= -->
+            <!-- HEADER -->
+            <!-- ========================================= -->
+
+            <div class="page-header">
+
+                <div>
+
+                    <h1 class="page-title">
+                        Proposal Generator
+                    </h1>
+
+                    <p class="page-subtitle">
+                        Generate professional customer documents
+                        directly from this Opportunity.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- ========================================= -->
+            <!-- CONFIGURATION -->
+            <!-- ========================================= -->
+
+            <div class="configuration-card">
+
+                <div class="section-heading">
+
+                    <div class="section-icon">
+
+                        <lightning-icon
+                            icon-name="utility:settings"
+                            size="small">
+                        </lightning-icon>
+
+                    </div>
+
+                    <div>
+
+                        <h2>
+                            Document Configuration
+                        </h2>
+
+                        <p>
+                            Select a template for this proposal.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="template-area">
+
+                    <lightning-combobox
+                        name="template"
+                        label="Document Template"
+                        value={selectedTemplate}
+                        options={templateOptions}
+                        onchange={handleTemplateChange}
+                        required>
+                    </lightning-combobox>
+
+
+                    <template if:true={selectedTemplateDescription}>
+
+                        <div class="template-description">
+
+                            <lightning-icon
+                                icon-name="utility:info"
+                                size="xx-small">
+                            </lightning-icon>
+
+                            <span>
+                                {selectedTemplateDescription}
+                            </span>
+
+                        </div>
+
+                    </template>
+
+                </div>
+
+
+                <div class="generate-area">
+
+                    <lightning-button
+                        variant="brand"
+                        label="Generate Proposal"
+                        icon-name="utility:preview"
+                        icon-position="left"
+                        onclick={handleGenerate}
+                        disabled={generateDisabled}>
+                    </lightning-button>
+
+                </div>
+
+            </div>
+
+
+            <!-- ========================================= -->
+            <!-- GENERATED DOCUMENT -->
+            <!-- ========================================= -->
+
+            <template if:true={generatedDocument}>
+
+                <div class="document-workspace">
+
+
+                    <!-- ================================= -->
+                    <!-- PREVIEW -->
+                    <!-- ================================= -->
+
+                    <div class="preview-card">
+
+                        <div class="preview-header">
+
+                            <div>
+
+                                <h2>
+                                    Proposal Generated
+                                </h2>
+
+                                <p>
+                                    {generatedDocument.fileName}
+                                </p>
+
+                            </div>
+
+
+                            <div class="status-badge">
+
+                                <lightning-icon
+                                    icon-name="utility:success"
+                                    size="xx-small">
+                                </lightning-icon>
+
+                                Ready
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- ================================= -->
+                        <!-- DOCUMENT MOCK PREVIEW -->
+                        <!-- ================================= -->
+
+                        <div class="document-preview">
+
+                            <div class="paper">
+
+
+                                <!-- PDF HEADER -->
+
+                                <div class="paper-header">
+
+                                    <div>
+
+                                        <div class="paper-company">
+                                            BUSINESS PROPOSAL
+                                        </div>
+
+                                        <div class="paper-company-subtitle">
+                                            Professional Customer Proposal
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="paper-type">
+                                        SALES PROPOSAL
+                                    </div>
+
+                                </div>
+
+
+                                <!-- TITLE -->
+
+                                <div class="paper-title">
+                                    Proposal Document
+                                </div>
+
+                                <div class="paper-subtitle">
+                                    Generated from Salesforce
+                                </div>
+
+
+                                <!-- SUMMARY -->
+
+                                <div class="paper-section">
+
+                                    <div class="paper-section-title">
+                                        PROPOSAL OVERVIEW
+                                    </div>
+
+
+                                    <div class="paper-grid">
+
+                                        <div>
+
+                                            <span class="paper-label">
+                                                DOCUMENT
+                                            </span>
+
+                                            <span class="paper-value">
+                                                {generatedDocument.fileName}
+                                            </span>
+
+                                        </div>
+
+
+                                        <div>
+
+                                            <span class="paper-label">
+                                                TYPE
+                                            </span>
+
+                                            <span class="paper-value">
+                                                {selectedTemplate}
+                                            </span>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+
+
+                                <!-- PRODUCTS -->
+
+                                <div class="paper-section">
+
+                                    <div class="paper-section-title">
+                                        PRODUCTS &amp; COMMERCIAL DETAILS
+                                    </div>
+
+
+                                    <div class="paper-table">
+
+                                        <div class="paper-table-header">
+
+                                            <span>
+                                                PRODUCT
+                                            </span>
+
+                                            <span>
+                                                QTY
+                                            </span>
+
+                                            <span>
+                                                TOTAL
+                                            </span>
+
+                                        </div>
+
+
+                                        <div class="paper-table-row">
+
+                                            <span>
+                                                Opportunity Products
+                                            </span>
+
+                                            <span>
+                                                —
+                                            </span>
+
+                                            <span>
+                                                Salesforce Data
+                                            </span>
+
+                                        </div>
+
+
+                                        <div class="paper-table-row">
+
+                                            <span>
+                                                Commercial Details
+                                            </span>
+
+                                            <span>
+                                                —
+                                            </span>
+
+                                            <span>
+                                                Included
+                                            </span>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+
+                                <!-- FOOTER -->
+
+                                <div class="paper-footer">
+
+                                    Generated from Salesforce
+
+                                    <span>
+                                        CONFIDENTIAL
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- ================================= -->
+                        <!-- ACTIONS -->
+                        <!-- ================================= -->
+
+                        <div class="preview-actions">
+
+                            <lightning-button
+                                label="Open PDF"
+                                icon-name="utility:new_window"
+                                data-action="open"
+                                onclick={handleDownload}>
+                            </lightning-button>
+
+
+                            <lightning-button
+                                variant="brand"
+                                label="Download PDF"
+                                icon-name="utility:download"
+                                 data-action="download"
+                                onclick={handleDownload}>
+                            </lightning-button>
+
+
+                            <lightning-button
+                                label="Send via Email"
+                                icon-name="utility:email"
+                                onclick={openEmailModal}>
+                            </lightning-button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ================================= -->
+                    <!-- DOCUMENT INFORMATION -->
+                    <!-- ================================= -->
+
+                    <div class="info-card">
+
+                        <div class="info-header">
+
+                            <h2>
+                                Document Information
+                            </h2>
+
+                        </div>
+
+
+                        <div class="info-row">
+
+                            <span class="info-label">
+                                File
+                            </span>
+
+                            <span class="info-value">
+                                {generatedDocument.fileName}
+                            </span>
+
+                        </div>
+
+
+                        <div class="info-row">
+
+                            <span class="info-label">
+                                Template
+                            </span>
+
+                            <span class="info-value">
+                                {selectedTemplate}
+                            </span>
+
+                        </div>
+
+
+                        <div class="info-row">
+
+                            <span class="info-label">
+                                Storage
+                            </span>
+
+                            <span class="info-value">
+                                Salesforce Files
+                            </span>
+
+                        </div>
+
+
+                        <div class="info-row">
+
+                            <span class="info-label">
+                                Version
+                            </span>
+
+                            <span class="info-value">
+                                Latest
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </template>
+
+
+            <!-- ========================================= -->
+            <!-- DOCUMENT HISTORY -->
+            <!-- ========================================= -->
+
+            <template if:true={hasHistory}>
+
+                <div class="history-section">
+
+
+                    <!-- HISTORY HEADER -->
+
+                    <div class="history-header">
+
+                        <div class="history-heading">
+
+                            <div class="history-icon">
+
+                                <lightning-icon
+                                    icon-name="standard:file"
+                                    size="small">
+                                </lightning-icon>
+
+                            </div>
+
+
+                            <div>
+
+                                <h2>
+                                    Document History
+                                </h2>
+
+                                <p>
+                                    Previously generated proposals
+                                    for this Opportunity
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="history-count">
+
+                            {history.length}
+
+                            <span>
+                                Documents
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- HISTORY LIST -->
+
+                    <div class="history-list">
+
+                        <template
+                            for:each={history}
+                            for:item="document">
+
+
+                            <div
+                                key={document.contentDocumentId}
+                                class="history-row">
+
+
+                                <!-- FILE ICON -->
+
+                                <div class="history-file-icon">
+
+                                    <lightning-icon
+                                        icon-name="doctype:pdf"
+                                        size="medium">
+                                    </lightning-icon>
+
+                                </div>
+
+
+                                <!-- DOCUMENT INFORMATION -->
+
+                                <div class="history-document-info">
+
+                                    <div class="history-title">
+
+                                        {document.fileName}
+
+                                    </div>
+
+
+                                    <div class="history-meta">
+
+                                        <span class="history-meta-item">
+
+                                            <lightning-icon
+                                                icon-name="utility:event"
+                                                size="xx-small">
+                                            </lightning-icon>
+
+                                            {document.createdDate}
+
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+
+                                <!-- ACTIONS -->
+
+                                <div class="history-actions">
+
+                                    <lightning-button
+                                        label="Download"
+                                        icon-name="utility:download"
+                                        icon-position="left"
+                                        data-url={document.downloadUrl}
+                                        onclick={handleHistoryDownload}>
+                                    </lightning-button>
+
+
+                                    <lightning-button
+                                        label="Delete"
+                                        icon-name="utility:delete"
+                                        icon-position="left"
+                                        variant="destructive-text"
+                                        data-document-id={document.contentDocumentId}
+                                        onclick={handleDeleteHistory}>
+                                    </lightning-button>
+
+                                </div>
+
+
+                            </div>
+
+                        </template>
+
+                    </div>
+
+                </div>
+
+            </template>
+
+
+            <!-- ========================================= -->
+            <!-- EMAIL MODAL -->
+            <!-- ========================================= -->
+
+            <template if:true={showEmailModal}>
+
+                <section
+                    role="dialog"
+                    tabindex="-1"
+                    aria-modal="true"
+                    class="modal-backdrop">
+
+
+                    <div class="email-modal">
+
+
+                        <!-- MODAL HEADER -->
+
+                        <div class="modal-header">
+
+                            <div>
+
+                                <h2>
+                                    Send Proposal
+                                </h2>
+
+                                <p>
+                                    Send the generated PDF via email.
+                                </p>
+
+                            </div>
+
+
+                            <button
+                                class="close-button"
+                                onclick={closeEmailModal}
+                                disabled={isSendingEmail}>
+
+                                ×
+
+                            </button>
+
+                        </div>
+
+
+                        <!-- MODAL BODY -->
+
+                        <div class="modal-body">
+
+                            <lightning-input
+                                type="email"
+                                label="Recipient Email"
+                                value={recipientEmail}
+                                onchange={handleEmailChange}
+                                placeholder="name@company.com"
+                                required>
+                            </lightning-input>
+
+                        </div>
+
+
+                        <!-- MODAL FOOTER -->
+
+                        <div class="modal-footer">
+
+                            <lightning-button
+                                label="Cancel"
+                                onclick={closeEmailModal}
+                                disabled={isSendingEmail}>
+                            </lightning-button>
+
+
+                            <lightning-button
+                                variant="brand"
+                                label="Send Proposal"
+                                icon-name="utility:send"
+                                onclick={handleSendEmail}
+                                disabled={isSendingEmail}>
+                            </lightning-button>
+
+                        </div>
+
+
+                    </div>
+
+                </section>
+
+            </template>
+
+
+        </div>
+
+    </lightning-card>
+
+</template>

@@ -1,0 +1,16 @@
+<template>
+    <section class="panel">
+        <lightning-button label="Subscribe" onclick={subscribe}></lightning-button>
+        <template if:true={importId}>
+            <p class="muted">Tracking {importId}</p>
+        </template>
+        <div class="events">
+            <template for:each={events} for:item="eventRecord">
+                <article key={eventRecord.id} class="event">
+                    <strong>{eventRecord.status}</strong>
+                    <span>{eventRecord.message}</span>
+                </article>
+            </template>
+        </div>
+    </section>
+</template>

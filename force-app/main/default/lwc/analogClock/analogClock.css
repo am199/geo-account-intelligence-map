@@ -1,0 +1,37 @@
+:host {
+    display: block;
+    width: 200px; /* Adjust the size as needed */
+    height: 200px; /* Adjust the size as needed */
+}
+
+.clock {
+    position: relative;
+    width: 200%;
+    height: 100%;
+}
+
+.clock-face {
+    fill: #e3f7f8;
+    stroke: #98cacd;
+    stroke-width: 2;
+}
+
+.hour-number {
+    font-size: 14px; /* Increase font size for better visibility */
+    fill: #333;
+    text-anchor: middle;
+    dominant-baseline: middle; /* Center the text vertically */
+}
+
+.minute-dot {
+    fill: #333;
+}
+
+.hour-hand,
+.minute-hand,
+.second-hand {
+    stroke: #bcebf3;
+    stroke-width: 2;
+    stroke-linecap: round;
+    transform-origin: 50% 50%;
+}

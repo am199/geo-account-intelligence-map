@@ -1,0 +1,16 @@
+<template>
+    <section class="panel">
+        <lightning-textarea label="Failed row error" value={errorMessage} onchange={handleError}></lightning-textarea>
+        <div class="actions">
+            <lightning-button variant="brand" label="Analyze Error" onclick={analyze}></lightning-button>
+        </div>
+
+        <template if:true={insight}>
+            <article class="result">
+                <p><strong>{insight.category}</strong></p>
+                <p>{insight.recommendation}</p>
+                <p>Severity: {insight.severity}</p>
+            </article>
+        </template>
+    </section>
+</template>

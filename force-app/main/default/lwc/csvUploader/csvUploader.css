@@ -1,0 +1,10 @@
+.panel {
+    padding: 1rem 0;
+}
+.actions {
+    margin-top: 0.75rem;
+}
+.muted {
+    color: #5c5c5c;
+    margin-top: 0.5rem;
+}

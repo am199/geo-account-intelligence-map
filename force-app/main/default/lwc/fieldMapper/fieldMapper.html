@@ -1,0 +1,37 @@
+<template>
+    <section class="panel">
+        <lightning-combobox
+            label="Target object"
+            value={objectApiName}
+            options={objectOptions}
+            onchange={handleObjectChange}>
+        </lightning-combobox>
+
+        <template if:true={hasHeaders}>
+            <div class="mapping-grid">
+                <template for:each={mappingRows} for:item="row">
+                    <div class="mapping-row" key={row.header}>
+                        <span>{row.header}</span>
+                        <lightning-combobox
+                            label="Target field"
+                            variant="label-hidden"
+                            data-header={row.header}
+                            value={row.value}
+                            options={fieldOptions}
+                            onchange={handleMappingChange}>
+                        </lightning-combobox>
+                    </div>
+                </template>
+            </div>
+        </template>
+
+        <div class="actions">
+            <lightning-button label="Analyze Risk" onclick={analyzeRisk}></lightning-button>
+            <lightning-button variant="brand" label="Start Import" onclick={startImport}></lightning-button>
+        </div>
+
+        <template if:true={summary}>
+            <p>{summary}</p>
+        </template>
+    </section>
+</template>

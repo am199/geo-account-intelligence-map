@@ -1,0 +1,18 @@
+.panel {
+    padding: 1rem 0;
+}
+.inline {
+    display: grid;
+    grid-template-columns: 12rem minmax(12rem, 1fr);
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+}
+.actions {
+    margin-top: 1rem;
+}
+.result {
+    border: 1px solid #d8dde6;
+    border-radius: 6px;
+    margin-top: 1rem;
+    padding: 0.75rem;
+}

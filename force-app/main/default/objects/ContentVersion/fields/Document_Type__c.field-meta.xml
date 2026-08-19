@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Document_Type__c</fullName>
+    <label>Document Type</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Pitch Deck</fullName>
+                <default>false</default>
+                <label>Pitch Deck</label>
+            </value>
+            <value>
+                <fullName>Financial Model</fullName>
+                <default>false</default>
+                <label>Financial Model</label>
+            </value>
+            <value>
+                <fullName>Term Sheet</fullName>
+                <default>false</default>
+                <label>Term Sheet</label>
+            </value>
+            <value>
+                <fullName>DD Checklist</fullName>
+                <default>false</default>
+                <label>DD Checklist</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

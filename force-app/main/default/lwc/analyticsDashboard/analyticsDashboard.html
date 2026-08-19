@@ -1,0 +1,21 @@
+<template>
+    <section class="panel">
+        <div class="actions">
+            <lightning-button label="Refresh Metrics" onclick={loadMetrics}></lightning-button>
+        </div>
+        <div class="metric-grid">
+            <template for:each={metrics} for:item="metric">
+                <article key={metric.label} class="metric">
+                    <span>{metric.label}</span>
+                    <strong>{metric.value}</strong>
+                    <p>{metric.detail}</p>
+                </article>
+            </template>
+        </div>
+        <lightning-card title="CRM Analytics">
+            <div class="analytics-note">
+                Embed the CRM Analytics dashboard asset for import health, duplicate impact, failed row trends, and merge audit views in this panel.
+            </div>
+        </lightning-card>
+    </section>
+</template>

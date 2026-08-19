@@ -1,0 +1,20 @@
+<template>
+    <div class="clock" >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+            <!-- Draw the clock face -->
+            <circle class="clock-face" cx="100" cy="100" r="90" />
+            <!-- Draw the hour numbers -->
+            <template for:each={hours} for:item="hour">
+                <text key={hour} class="hour-number" x={hour.cx} y={hour.cy}>{hour.value}</text>
+            </template>
+            <!-- Draw dots for the minutes -->
+            <template for:each={dots} for:item="dot">
+                <circle key={dot} class="minute-dot" cx={dot.cx} cy={dot.cy} r="3" />
+            </template>
+            <!-- Draw the clock hands -->
+            <line class="hour-hand" x1="100" y1="100" x2="100" y2="70" />
+            <line class="minute-hand" x1="100" y1="100" x2="100" y2="60" />
+            <line class="second-hand" x1="100" y1="100" x2="100" y2="50" />
+        </svg>
+    </div>
+</template>

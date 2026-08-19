@@ -1,0 +1,989 @@
+<apex:page
+    controller="ProposalPDFController"
+    renderAs="pdf"
+    showHeader="false"
+    sidebar="false"
+    standardStylesheets="false"
+    applyBodyTag="false">
+
+    <!-- =========================================
+         DOCUMENT
+    ========================================== -->
+
+    <div style="font-family: Arial, Helvetica, sans-serif;
+                color:#222222;
+                font-size:10px;
+                line-height:1.45;">
+
+        <!-- =========================================
+             HEADER
+        ========================================== -->
+
+        <table style="width:100%;
+                      border-collapse:collapse;
+                      border-bottom:3px solid #17365d;
+                      margin-bottom:25px;">
+
+            <tr>
+
+                <td style="width:60%;
+                           padding-bottom:15px;">
+
+                    <div style="font-size:20px;
+                                font-weight:bold;
+                                color:#17365d;">
+
+                        Business Proposal
+
+                    </div>
+
+                    <div style="font-size:8px;
+                                color:#777777;
+                                margin-top:3px;">
+
+                        Professional Customer Proposal
+
+                    </div>
+
+                </td>
+
+                <td style="width:40%;
+                           text-align:right;
+                           padding-bottom:15px;">
+
+                    <div style="font-size:8px;
+                                color:#777777;
+                                text-transform:uppercase;">
+
+                        Document
+
+                    </div>
+
+                    <div style="font-size:13px;
+                                font-weight:bold;
+                                color:#17365d;
+                                margin-top:3px;">
+
+                        {!documentTitle}
+
+                    </div>
+
+                </td>
+
+            </tr>
+
+        </table>
+
+
+        <!-- =========================================
+             TITLE
+        ========================================== -->
+
+        <div style="font-size:23px;
+                    font-weight:bold;
+                    color:#17365d;
+                    margin-bottom:5px;">
+
+            {!opportunity.Name}
+
+        </div>
+
+        <div style="font-size:10px;
+                    color:#666666;
+                    margin-bottom:20px;">
+
+            Prepared for {!account.Name}
+
+        </div>
+
+
+        <!-- =========================================
+             PROPOSAL OVERVIEW
+        ========================================== -->
+
+        <table style="width:100%;
+                      border-collapse:collapse;
+                      background:#f4f7fa;
+                      border:1px solid #d9e2ec;
+                      border-left:4px solid #17365d;
+                      margin-bottom:22px;">
+
+            <tr>
+
+                <td colspan="4"
+                    style="font-size:11px;
+                           font-weight:bold;
+                           color:#17365d;
+                           padding:12px 12px 5px 12px;">
+
+                    Proposal Overview
+
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td style="width:20%;
+                           font-size:8px;
+                           color:#777777;
+                           text-transform:uppercase;
+                           padding:6px 12px;">
+
+                    Customer
+
+                </td>
+
+                <td style="width:30%;
+                           font-size:10px;
+                           font-weight:bold;
+                           padding:6px 12px;">
+
+                    {!account.Name}
+
+                </td>
+
+                <td style="width:20%;
+                           font-size:8px;
+                           color:#777777;
+                           text-transform:uppercase;
+                           padding:6px 12px;">
+
+                    Opportunity
+
+                </td>
+
+                <td style="width:30%;
+                           font-size:10px;
+                           font-weight:bold;
+                           padding:6px 12px;">
+
+                    {!opportunity.Name}
+
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td style="font-size:8px;
+                           color:#777777;
+                           text-transform:uppercase;
+                           padding:6px 12px;">
+
+                    Stage
+
+                </td>
+
+                <td style="font-size:10px;
+                           font-weight:bold;
+                           padding:6px 12px;">
+
+                    {!opportunity.StageName}
+
+                </td>
+
+                <td style="font-size:8px;
+                           color:#777777;
+                           text-transform:uppercase;
+                           padding:6px 12px;">
+
+                    Close Date
+
+                </td>
+
+                <td style="font-size:10px;
+                           font-weight:bold;
+                           padding:6px 12px;">
+
+                    <apex:outputText value="{0,date,dd MMM yyyy}">
+
+                        <apex:param value="{!opportunity.CloseDate}"/>
+
+                    </apex:outputText>
+
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td style="font-size:8px;
+                           color:#777777;
+                           text-transform:uppercase;
+                           padding:6px 12px 12px 12px;">
+
+                    Amount
+
+                </td>
+
+                <td style="font-size:10px;
+                           font-weight:bold;
+                           padding:6px 12px 12px 12px;">
+
+                    <apex:outputText value="{0,number,#,##0.00}">
+
+                        <apex:param value="{!opportunity.Amount}"/>
+
+                    </apex:outputText>
+
+                </td>
+
+                <td style="font-size:8px;
+                           color:#777777;
+                           text-transform:uppercase;
+                           padding:6px 12px 12px 12px;">
+
+                    Probability
+
+                </td>
+
+                <td style="font-size:10px;
+                           font-weight:bold;
+                           padding:6px 12px 12px 12px;">
+
+                    {!opportunity.Probability}%
+
+                </td>
+
+            </tr>
+
+        </table>
+
+
+        <!-- =========================================
+             CUSTOMER INFORMATION
+        ========================================== -->
+
+        <div style="margin-top:20px;
+                    margin-bottom:18px;">
+
+            <div style="background:#17365d;
+                        color:#ffffff;
+                        font-size:10px;
+                        font-weight:bold;
+                        padding:8px 10px;
+                        text-transform:uppercase;">
+
+                Customer Information
+
+            </div>
+
+            <table style="width:100%;
+                          border-collapse:collapse;
+                          border:1px solid #dddddd;">
+
+                <tr>
+
+                    <td style="width:25%;
+                               padding:7px 6px;
+                               font-size:8px;
+                               color:#777777;
+                               text-transform:uppercase;
+                               border-bottom:1px solid #eeeeee;">
+
+                        Account Name
+
+                    </td>
+
+                    <td style="width:25%;
+                               padding:7px 6px;
+                               font-weight:bold;
+                               border-bottom:1px solid #eeeeee;">
+
+                        {!account.Name}
+
+                    </td>
+
+                    <td style="width:25%;
+                               padding:7px 6px;
+                               font-size:8px;
+                               color:#777777;
+                               text-transform:uppercase;
+                               border-bottom:1px solid #eeeeee;">
+
+                        Billing City
+
+                    </td>
+
+                    <td style="width:25%;
+                               padding:7px 6px;
+                               font-weight:bold;
+                               border-bottom:1px solid #eeeeee;">
+
+                        {!account.BillingCity}
+
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <td style="padding:7px 6px;
+                               font-size:8px;
+                               color:#777777;
+                               text-transform:uppercase;
+                               border-bottom:1px solid #eeeeee;">
+
+                        Billing State
+
+                    </td>
+
+                    <td style="padding:7px 6px;
+                               font-weight:bold;
+                               border-bottom:1px solid #eeeeee;">
+
+                        {!account.BillingState}
+
+                    </td>
+
+                    <td style="padding:7px 6px;
+                               font-size:8px;
+                               color:#777777;
+                               text-transform:uppercase;
+                               border-bottom:1px solid #eeeeee;">
+
+                        Country
+
+                    </td>
+
+                    <td style="padding:7px 6px;
+                               font-weight:bold;
+                               border-bottom:1px solid #eeeeee;">
+
+                        {!account.BillingCountry}
+
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <td style="padding:7px 6px;
+                               font-size:8px;
+                               color:#777777;
+                               text-transform:uppercase;">
+
+                        Billing Street
+
+                    </td>
+
+                    <td style="padding:7px 6px;
+                               font-weight:bold;">
+
+                        {!account.BillingStreet}
+
+                    </td>
+
+                    <td style="padding:7px 6px;
+                               font-size:8px;
+                               color:#777777;
+                               text-transform:uppercase;">
+
+                        Postal Code
+
+                    </td>
+
+                    <td style="padding:7px 6px;
+                               font-weight:bold;">
+
+                        {!account.BillingPostalCode}
+
+                    </td>
+
+                </tr>
+
+            </table>
+
+        </div>
+
+
+        <!-- =========================================
+             PRIMARY CONTACT
+        ========================================== -->
+
+        <div style="margin-top:20px;
+                    margin-bottom:18px;">
+
+            <div style="background:#17365d;
+                        color:#ffffff;
+                        font-size:10px;
+                        font-weight:bold;
+                        padding:8px 10px;
+                        text-transform:uppercase;">
+
+                Primary Contact
+
+            </div>
+
+            <table style="width:100%;
+                          border-collapse:collapse;
+                          border:1px solid #dddddd;">
+
+                <tr>
+
+                    <td style="width:25%;
+                               padding:7px 6px;
+                               font-size:8px;
+                               color:#777777;
+                               text-transform:uppercase;
+                               border-bottom:1px solid #eeeeee;">
+
+                        Contact Name
+
+                    </td>
+
+                    <td style="width:25%;
+                               padding:7px 6px;
+                               font-weight:bold;
+                               border-bottom:1px solid #eeeeee;">
+
+                        {!contact.Name}
+
+                    </td>
+
+                    <td style="width:25%;
+                               padding:7px 6px;
+                               font-size:8px;
+                               color:#777777;
+                               text-transform:uppercase;
+                               border-bottom:1px solid #eeeeee;">
+
+                        Email
+
+                    </td>
+
+                    <td style="width:25%;
+                               padding:7px 6px;
+                               font-weight:bold;
+                               border-bottom:1px solid #eeeeee;">
+
+                        {!contact.Email}
+
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <td style="padding:7px 6px;
+                               font-size:8px;
+                               color:#777777;
+                               text-transform:uppercase;">
+
+                        Phone
+
+                    </td>
+
+                    <td style="padding:7px 6px;
+                               font-weight:bold;">
+
+                        {!contact.Phone}
+
+                    </td>
+
+                    <td>
+                    </td>
+
+                    <td>
+                    </td>
+
+                </tr>
+
+            </table>
+
+        </div>
+
+
+        <!-- =========================================
+             OPPORTUNITY DETAILS
+        ========================================== -->
+
+        <div style="margin-top:20px;
+                    margin-bottom:18px;">
+
+            <div style="background:#17365d;
+                        color:#ffffff;
+                        font-size:10px;
+                        font-weight:bold;
+                        padding:8px 10px;
+                        text-transform:uppercase;">
+
+                Opportunity Details
+
+            </div>
+
+            <table style="width:100%;
+                          border-collapse:collapse;
+                          border:1px solid #dddddd;">
+
+                <tr>
+
+                    <td style="width:25%;
+                               padding:7px 6px;
+                               font-size:8px;
+                               color:#777777;
+                               text-transform:uppercase;
+                               border-bottom:1px solid #eeeeee;">
+
+                        Opportunity
+
+                    </td>
+
+                    <td style="width:25%;
+                               padding:7px 6px;
+                               font-weight:bold;
+                               border-bottom:1px solid #eeeeee;">
+
+                        {!opportunity.Name}
+
+                    </td>
+
+                    <td style="width:25%;
+                               padding:7px 6px;
+                               font-size:8px;
+                               color:#777777;
+                               text-transform:uppercase;
+                               border-bottom:1px solid #eeeeee;">
+
+                        Stage
+
+                    </td>
+
+                    <td style="width:25%;
+                               padding:7px 6px;
+                               font-weight:bold;
+                               border-bottom:1px solid #eeeeee;">
+
+                        {!opportunity.StageName}
+
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <td style="padding:7px 6px;
+                               font-size:8px;
+                               color:#777777;
+                               text-transform:uppercase;">
+
+                        Close Date
+
+                    </td>
+
+                    <td style="padding:7px 6px;
+                               font-weight:bold;">
+
+                        <apex:outputText value="{0,date,dd MMM yyyy}">
+
+                            <apex:param value="{!opportunity.CloseDate}"/>
+
+                        </apex:outputText>
+
+                    </td>
+
+                    <td style="padding:7px 6px;
+                               font-size:8px;
+                               color:#777777;
+                               text-transform:uppercase;">
+
+                        Amount
+
+                    </td>
+
+                    <td style="padding:7px 6px;
+                               font-weight:bold;">
+
+                        <apex:outputText value="{0,number,#,##0.00}">
+
+                            <apex:param value="{!opportunity.Amount}"/>
+
+                        </apex:outputText>
+
+                    </td>
+
+                </tr>
+
+            </table>
+
+        </div>
+
+
+        <!-- =========================================
+             PRODUCTS
+        ========================================== -->
+
+        <div style="margin-top:20px;
+                    margin-bottom:18px;">
+
+            <div style="background:#17365d;
+                        color:#ffffff;
+                        font-size:10px;
+                        font-weight:bold;
+                        padding:8px 10px;
+                        text-transform:uppercase;">
+
+                Products &amp; Commercial Details
+
+            </div>
+
+            <table style="width:100%;
+                          border-collapse:collapse;
+                          border:1px solid #dddddd;">
+
+                <thead>
+
+                    <tr>
+
+                        <th style="width:25%;
+                                   background:#edf2f7;
+                                   color:#17365d;
+                                   font-size:8px;
+                                   text-transform:uppercase;
+                                   padding:8px 6px;
+                                   border-bottom:2px solid #c9d4df;
+                                   text-align:left;">
+
+                            Product
+
+                        </th>
+
+                        <th style="width:35%;
+                                   background:#edf2f7;
+                                   color:#17365d;
+                                   font-size:8px;
+                                   text-transform:uppercase;
+                                   padding:8px 6px;
+                                   border-bottom:2px solid #c9d4df;
+                                   text-align:left;">
+
+                            Description
+
+                        </th>
+
+                        <th style="width:10%;
+                                   background:#edf2f7;
+                                   color:#17365d;
+                                   font-size:8px;
+                                   text-transform:uppercase;
+                                   padding:8px 6px;
+                                   border-bottom:2px solid #c9d4df;
+                                   text-align:right;">
+
+                            Qty
+
+                        </th>
+
+                        <th style="width:15%;
+                                   background:#edf2f7;
+                                   color:#17365d;
+                                   font-size:8px;
+                                   text-transform:uppercase;
+                                   padding:8px 6px;
+                                   border-bottom:2px solid #c9d4df;
+                                   text-align:right;">
+
+                            Unit Price
+
+                        </th>
+
+                        <th style="width:15%;
+                                   background:#edf2f7;
+                                   color:#17365d;
+                                   font-size:8px;
+                                   text-transform:uppercase;
+                                   padding:8px 6px;
+                                   border-bottom:2px solid #c9d4df;
+                                   text-align:right;">
+
+                            Total
+
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <apex:repeat
+                        value="{!lineItems}"
+                        var="item">
+
+                        <tr>
+
+                            <td style="padding:8px 6px;
+                                       border-bottom:1px solid #eeeeee;
+                                       font-size:9px;">
+
+                                {!item.PricebookEntry.Product2.Name}
+
+                            </td>
+
+                            <td style="padding:8px 6px;
+                                       border-bottom:1px solid #eeeeee;
+                                       font-size:9px;">
+
+                                {!item.PricebookEntry.Product2.Description}
+
+                            </td>
+
+                            <td style="padding:8px 6px;
+                                       border-bottom:1px solid #eeeeee;
+                                       font-size:9px;
+                                       text-align:right;">
+
+                                {!item.Quantity}
+
+                            </td>
+
+                            <td style="padding:8px 6px;
+                                       border-bottom:1px solid #eeeeee;
+                                       font-size:9px;
+                                       text-align:right;">
+
+                                <apex:outputText value="{0,number,#,##0.00}">
+
+                                    <apex:param value="{!item.UnitPrice}"/>
+
+                                </apex:outputText>
+
+                            </td>
+
+                            <td style="padding:8px 6px;
+                                       border-bottom:1px solid #eeeeee;
+                                       font-size:9px;
+                                       text-align:right;">
+
+                                <apex:outputText value="{0,number,#,##0.00}">
+
+                                    <apex:param value="{!item.TotalPrice}"/>
+
+                                </apex:outputText>
+
+                            </td>
+
+                        </tr>
+
+                    </apex:repeat>
+
+                    <tr>
+
+                        <td colspan="4"
+                            style="background:#f4f7fa;
+                                   font-weight:bold;
+                                   border-top:2px solid #c9d4df;
+                                   padding:9px;
+                                   text-align:right;">
+
+                            Total Opportunity Amount
+
+                        </td>
+
+                        <td style="background:#f4f7fa;
+                                   font-weight:bold;
+                                   border-top:2px solid #c9d4df;
+                                   padding:9px;
+                                   text-align:right;">
+
+                            <apex:outputText value="{0,number,#,##0.00}">
+
+                                <apex:param value="{!opportunity.Amount}"/>
+
+                            </apex:outputText>
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+        <!-- =========================================
+             EXECUTIVE SUMMARY
+        ========================================== -->
+
+        <div style="margin-top:20px;
+                    margin-bottom:18px;">
+
+            <div style="background:#17365d;
+                        color:#ffffff;
+                        font-size:10px;
+                        font-weight:bold;
+                        padding:8px 10px;
+                        text-transform:uppercase;">
+
+                Executive Summary
+
+            </div>
+
+            <div style="border:1px solid #dddddd;
+                        border-top:none;
+                        padding:12px;">
+
+                <div style="background:#fafafa;
+                            border:1px solid #e2e2e2;
+                            padding:14px;
+                            color:#444444;">
+
+                    This proposal outlines the commercial opportunity
+                    between our organization and
+                    <strong>{!account.Name}</strong>.
+
+                    <br/>
+                    <br/>
+
+                    The proposed engagement is associated with
+                    <strong>{!opportunity.Name}</strong>
+                    and is currently in the
+                    <strong>{!opportunity.StageName}</strong>
+                    stage.
+
+                    <br/>
+                    <br/>
+
+                    The information presented in this document reflects
+                    the Salesforce opportunity data available at the
+                    time this proposal was generated.
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================================
+             NEXT STEPS
+        ========================================== -->
+
+        <div style="margin-top:20px;
+                    margin-bottom:18px;">
+
+            <div style="background:#17365d;
+                        color:#ffffff;
+                        font-size:10px;
+                        font-weight:bold;
+                        padding:8px 10px;
+                        text-transform:uppercase;">
+
+                Recommended Next Steps
+
+            </div>
+
+            <table style="width:100%;
+                          border-collapse:collapse;
+                          border:1px solid #dddddd;">
+
+                <tr>
+
+                    <td style="width:25px;
+                               background:#17365d;
+                               color:#ffffff;
+                               text-align:center;
+                               font-weight:bold;
+                               padding:8px;">
+
+                        1
+
+                    </td>
+
+                    <td style="padding:8px;
+                               border-bottom:1px solid #eeeeee;">
+
+                        Review the proposal and commercial details.
+
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <td style="width:25px;
+                               background:#17365d;
+                               color:#ffffff;
+                               text-align:center;
+                               font-weight:bold;
+                               padding:8px;">
+
+                        2
+
+                    </td>
+
+                    <td style="padding:8px;
+                               border-bottom:1px solid #eeeeee;">
+
+                        Confirm requirements and implementation scope.
+
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <td style="width:25px;
+                               background:#17365d;
+                               color:#ffffff;
+                               text-align:center;
+                               font-weight:bold;
+                               padding:8px;">
+
+                        3
+
+                    </td>
+
+                    <td style="padding:8px;
+                               border-bottom:1px solid #eeeeee;">
+
+                        Align on timeline and next actions.
+
+                    </td>
+
+                </tr>
+
+            </table>
+
+        </div>
+
+
+        <!-- =========================================
+             FOOTER
+        ========================================== -->
+
+        <table style="width:100%;
+                      border-collapse:collapse;
+                      margin-top:30px;
+                      padding-top:12px;
+                      border-top:1px solid #dddddd;
+                      font-size:8px;
+                      color:#777777;">
+
+            <tr>
+
+                <td style="width:50%;">
+
+                    CONFIDENTIAL
+
+                </td>
+
+                <td style="width:50%;
+                           text-align:right;">
+
+                    Generated from Salesforce
+                    &nbsp; | &nbsp;
+                    {!opportunity.Name}
+
+                </td>
+
+            </tr>
+
+        </table>
+
+    </div>
+
+</apex:page>

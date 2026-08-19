@@ -1,0 +1,246 @@
+<template>
+
+    <lightning-card>
+
+        <div class="container">
+
+            <!-- HEADER -->
+
+            <div class="header">
+
+                <div>
+                    <div class="eyebrow">
+                        DEAL INTELLIGENCE
+                    </div>
+
+                    <h1>
+                        DealSense
+                    </h1>
+
+                    <p class="subtitle">
+                        AI-powered Opportunity coaching
+                    </p>
+                </div>
+
+                <div class="ai-icon">
+                    ✦
+                </div>
+
+            </div>
+
+
+            <!-- HEALTH -->
+
+            <div class="health-section">
+
+                <div class="health-ring">
+
+                    <div class="score">
+                        {healthScore}
+                    </div>
+
+                    <div class="score-label">
+                        / 100
+                    </div>
+
+                </div>
+
+
+                <div class="health-info">
+
+                    <div class="health-title">
+                        Deal Health
+                    </div>
+
+                    <div
+                        class={healthStatusClass}
+                    >
+                        {healthStatus}
+                    </div>
+
+                    <div class="health-description">
+                        {healthDescription}
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- METRICS -->
+
+            <div class="metrics">
+
+                <div class="metric">
+
+                    <span class="metric-label">
+                        Last Activity
+                    </span>
+
+                    <span class="metric-value">
+                        {activityLabel}
+                    </span>
+
+                </div>
+
+
+                <div class="metric">
+
+                    <span class="metric-label">
+                        Contacts
+                    </span>
+
+                    <span class="metric-value">
+                        {contactCount}
+                    </span>
+
+                </div>
+
+
+                <div class="metric">
+
+                    <span class="metric-label">
+                        Open Tasks
+                    </span>
+
+                    <span class="metric-value">
+                        {openTaskCount}
+                    </span>
+
+                </div>
+
+
+                <div class="metric">
+
+                    <span class="metric-label">
+                        Overdue
+                    </span>
+
+                    <span class="metric-value overdue">
+                        {overdueTaskCount}
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- RISKS -->
+
+            <template
+                if:true={hasRisks}
+            >
+
+                <div class="section">
+
+                    <div class="section-title">
+                        ⚠ Key Risks
+                    </div>
+
+                    <template
+                        for:each={riskSignals}
+                        for:item="risk"
+                    >
+
+                        <div
+                            key={risk}
+                            class="risk"
+                        >
+                            <span class="risk-dot">
+                                !
+                            </span>
+
+                            <span>
+                                {risk}
+                            </span>
+                        </div>
+
+                    </template>
+
+                </div>
+
+            </template>
+
+
+            <!-- POSITIVES -->
+
+            <template
+                if:true={hasPositives}
+            >
+
+                <div class="section">
+
+                    <div class="section-title">
+                        ✓ Positive Signals
+                    </div>
+
+                    <template
+                        for:each={positiveSignals}
+                        for:item="positive"
+                    >
+
+                        <div
+                            key={positive}
+                            class="positive"
+                        >
+                            <span>
+                                ✓
+                            </span>
+
+                            <span>
+                                {positive}
+                            </span>
+
+                        </div>
+
+                    </template>
+
+                </div>
+
+            </template>
+
+
+            <!-- ACTION -->
+
+            <div class="coach-container">
+
+                <lightning-button
+                    variant="brand"
+                    label="✦ Coach Me"
+                    onclick={handleCoachMe}
+                    disabled={loading}
+                    class="coach-button"
+                >
+                </lightning-button>
+
+                <p class="coach-hint">
+                    Ask Agentforce to analyze this deal
+                    and recommend your next best actions.
+                </p>
+
+            </div>
+
+
+            <template if:true={loading}>
+
+                <div class="loading">
+
+                    <lightning-spinner
+                        alternative-text="Analyzing deal"
+                        size="small"
+                    >
+                    </lightning-spinner>
+
+                    <span>
+                        Preparing your deal coach...
+                    </span>
+
+                </div>
+
+            </template>
+
+        </div>
+
+    </lightning-card>
+
+</template>

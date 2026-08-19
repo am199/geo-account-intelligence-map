@@ -1,0 +1,900 @@
+/* =========================================================
+   SMART DOCUMENT GENERATOR
+   ========================================================= */
+
+.generator-container {
+    padding: 24px;
+    background: #f7f9fc;
+    min-height: 100%;
+}
+
+
+/* =========================================================
+   PAGE HEADER
+   ========================================================= */
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.page-title {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 700;
+    color: #17365d;
+}
+
+.page-subtitle {
+    margin: 6px 0 0 0;
+    font-size: 13px;
+    color: #706e6b;
+}
+
+
+/* =========================================================
+   CONFIGURATION CARD
+   ========================================================= */
+
+.configuration-card {
+    background: #ffffff;
+    border: 1px solid #e1e6ec;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    margin-bottom: 24px;
+}
+
+
+/* =========================================================
+   SECTION HEADING
+   ========================================================= */
+
+.section-heading {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 22px;
+}
+
+.section-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 8px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #edf4fb;
+}
+
+.section-heading h2 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 700;
+    color: #181818;
+}
+
+.section-heading p {
+    margin: 4px 0 0 0;
+    font-size: 12px;
+    color: #706e6b;
+}
+
+
+/* =========================================================
+   TEMPLATE AREA
+   ========================================================= */
+
+.template-area {
+    max-width: 650px;
+}
+
+.template-description {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    margin-top: 10px;
+    padding: 10px 12px;
+
+    background: #f4f7fa;
+    border-left: 3px solid #17365d;
+    border-radius: 4px;
+
+    font-size: 12px;
+    color: #5f6368;
+}
+
+
+/* =========================================================
+   GENERATE AREA
+   ========================================================= */
+
+.generate-area {
+    margin-top: 22px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+
+/* =========================================================
+   DOCUMENT WORKSPACE
+   ========================================================= */
+
+.document-workspace {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 300px;
+    gap: 24px;
+
+    margin-bottom: 24px;
+}
+
+
+/* =========================================================
+   PREVIEW CARD
+   ========================================================= */
+
+.preview-card {
+    background: #ffffff;
+    border: 1px solid #e1e6ec;
+    border-radius: 12px;
+
+    overflow: hidden;
+
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+
+/* =========================================================
+   PREVIEW HEADER
+   ========================================================= */
+
+.preview-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 18px 22px;
+
+    border-bottom: 1px solid #eeeeee;
+}
+
+.preview-header h2 {
+    margin: 0;
+    font-size: 17px;
+    font-weight: 700;
+    color: #181818;
+}
+
+.preview-header p {
+    margin: 4px 0 0 0;
+    font-size: 12px;
+    color: #706e6b;
+
+    max-width: 500px;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   STATUS BADGE
+   ========================================================= */
+
+.status-badge {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    padding: 6px 10px;
+
+    background: #eaf7ee;
+    color: #2e844a;
+
+    border-radius: 20px;
+
+    font-size: 11px;
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   DOCUMENT PREVIEW
+   ========================================================= */
+
+.document-preview {
+    padding: 28px;
+
+    background: #eef1f5;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    min-height: 470px;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   PAPER
+   ========================================================= */
+
+.paper {
+    width: 100%;
+    max-width: 620px;
+
+    min-height: 700px;
+
+    background: #ffffff;
+
+    padding: 30px;
+
+    box-sizing: border-box;
+
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.12);
+}
+
+
+/* =========================================================
+   PAPER HEADER
+   ========================================================= */
+
+.paper-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    padding-bottom: 18px;
+
+    border-bottom: 3px solid #17365d;
+}
+
+.paper-company {
+    font-size: 17px;
+    font-weight: 700;
+    color: #17365d;
+}
+
+.paper-company-subtitle {
+    margin-top: 3px;
+    font-size: 9px;
+    color: #777777;
+}
+
+.paper-type {
+    font-size: 9px;
+    font-weight: 700;
+    color: #17365d;
+
+    text-align: right;
+}
+
+
+/* =========================================================
+   PAPER TITLE
+   ========================================================= */
+
+.paper-title {
+    margin-top: 24px;
+
+    font-size: 22px;
+    font-weight: 700;
+
+    color: #17365d;
+}
+
+.paper-subtitle {
+    margin-top: 4px;
+
+    font-size: 10px;
+    color: #777777;
+}
+
+
+/* =========================================================
+   PAPER SECTIONS
+   ========================================================= */
+
+.paper-section {
+    margin-top: 22px;
+}
+
+.paper-section-title {
+    padding: 7px 9px;
+
+    background: #17365d;
+
+    color: #ffffff;
+
+    font-size: 8px;
+    font-weight: 700;
+
+    letter-spacing: 0.3px;
+}
+
+.paper-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+
+    padding: 12px;
+
+    border: 1px solid #dddddd;
+    border-top: none;
+}
+
+.paper-label {
+    display: block;
+
+    font-size: 7px;
+    color: #888888;
+
+    letter-spacing: 0.4px;
+}
+
+.paper-value {
+    display: block;
+
+    margin-top: 4px;
+
+    font-size: 9px;
+    font-weight: 600;
+
+    color: #222222;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   PAPER CONTENT LINES
+   ========================================================= */
+
+.paper-lines {
+    padding: 14px;
+
+    border: 1px solid #dddddd;
+    border-top: none;
+}
+
+.paper-line {
+    height: 6px;
+
+    background: #e8ecf1;
+
+    margin-bottom: 9px;
+
+    border-radius: 3px;
+}
+
+.paper-line.long {
+    width: 95%;
+}
+
+.paper-line.medium {
+    width: 75%;
+}
+
+.paper-line.short {
+    width: 45%;
+}
+
+.paper-line:last-child {
+    margin-bottom: 0;
+}
+
+
+/* =========================================================
+   PAPER TABLE
+   ========================================================= */
+
+.paper-table {
+    border: 1px solid #dddddd;
+    border-top: none;
+}
+
+.paper-table-header,
+.paper-table-row {
+    display: grid;
+    grid-template-columns: 1fr 70px 110px;
+
+    gap: 10px;
+
+    padding: 9px 10px;
+}
+
+.paper-table-header {
+    background: #edf2f7;
+
+    font-size: 7px;
+    font-weight: 700;
+
+    color: #17365d;
+}
+
+.paper-table-row {
+    font-size: 8px;
+    color: #444444;
+
+    border-top: 1px solid #eeeeee;
+}
+
+
+/* =========================================================
+   PAPER FOOTER
+   ========================================================= */
+
+.paper-footer {
+    display: flex;
+    justify-content: space-between;
+
+    margin-top: 28px;
+    padding-top: 10px;
+
+    border-top: 1px solid #dddddd;
+
+    font-size: 7px;
+    color: #888888;
+}
+
+
+/* =========================================================
+   PREVIEW ACTIONS
+   ========================================================= */
+
+.preview-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    gap: 10px;
+
+    padding: 16px 20px;
+
+    border-top: 1px solid #eeeeee;
+
+    background: #ffffff;
+}
+
+
+/* =========================================================
+   DOCUMENT INFORMATION CARD
+   ========================================================= */
+
+.info-card {
+    background: #ffffff;
+
+    border: 1px solid #e1e6ec;
+    border-radius: 12px;
+
+    padding: 20px;
+
+    height: fit-content;
+
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.info-header {
+    padding-bottom: 14px;
+
+    border-bottom: 1px solid #eeeeee;
+
+    margin-bottom: 6px;
+}
+
+.info-header h2 {
+    margin: 0;
+
+    font-size: 16px;
+    font-weight: 700;
+
+    color: #181818;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    gap: 15px;
+
+    padding: 13px 0;
+
+    border-bottom: 1px solid #eeeeee;
+}
+
+.info-row:last-child {
+    border-bottom: none;
+}
+
+.info-label {
+    font-size: 11px;
+    color: #706e6b;
+}
+
+.info-value {
+    max-width: 170px;
+
+    text-align: right;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    color: #181818;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+/* =========================================================
+   DOCUMENT HISTORY
+   ========================================================= */
+
+.history-section {
+    margin-top: 28px;
+
+    padding: 24px;
+
+    background: #ffffff;
+
+    border: 1px solid #e1e6ec;
+    border-radius: 12px;
+
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+
+/* =========================================================
+   HISTORY HEADER
+   ========================================================= */
+
+.history-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding-bottom: 18px;
+
+    border-bottom: 1px solid #eeeeee;
+}
+
+.history-heading {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+}
+
+.history-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.history-heading h2 {
+    margin: 0;
+
+    font-size: 17px;
+    font-weight: 700;
+
+    color: #181818;
+}
+
+.history-heading p {
+    margin: 4px 0 0 0;
+
+    font-size: 12px;
+
+    color: #706e6b;
+}
+
+
+/* =========================================================
+   HISTORY COUNT
+   ========================================================= */
+
+.history-count {
+    display: flex;
+    align-items: baseline;
+
+    gap: 5px;
+
+    font-size: 16px;
+    font-weight: 700;
+
+    color: #181818;
+
+    white-space: nowrap;
+}
+
+.history-count span {
+    font-size: 11px;
+    font-weight: 400;
+
+    color: #706e6b;
+}
+
+
+/* =========================================================
+   HISTORY LIST
+   ========================================================= */
+
+.history-list {
+    width: 100%;
+}
+
+
+/* =========================================================
+   HISTORY ROW
+   ========================================================= */
+
+.history-row {
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+    min-height: 72px;
+
+    padding: 14px 4px;
+
+    border-bottom: 1px solid #eeeeee;
+
+    box-sizing: border-box;
+}
+
+.history-row:last-child {
+    border-bottom: none;
+}
+
+
+/* =========================================================
+   HISTORY PDF ICON
+   ========================================================= */
+
+.history-file-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 46px;
+    min-width: 46px;
+
+    margin-right: 14px;
+}
+
+
+/* =========================================================
+   HISTORY DOCUMENT INFO
+   ========================================================= */
+
+.history-document-info {
+    flex: 1;
+
+    min-width: 0;
+
+    padding-right: 20px;
+}
+
+.history-title {
+    font-size: 14px;
+    font-weight: 600;
+
+    color: #181818;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.history-meta {
+    display: flex;
+    align-items: center;
+
+    margin-top: 6px;
+}
+
+.history-meta-item {
+    display: flex;
+    align-items: center;
+
+    gap: 5px;
+
+    font-size: 11px;
+
+    color: #706e6b;
+}
+
+
+/* =========================================================
+   HISTORY ACTIONS
+   ========================================================= */
+
+.history-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    gap: 14px;
+
+    margin-left: auto;
+
+    padding-left: 50px;
+
+    min-width: 210px;
+
+    flex-shrink: 0;
+}
+
+
+/* =========================================================
+   EMAIL MODAL
+   ========================================================= */
+
+.modal-backdrop {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    z-index: 9999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(0, 0, 0, 0.45);
+}
+
+.email-modal {
+    width: 450px;
+    max-width: calc(100% - 40px);
+
+    background: #ffffff;
+
+    border-radius: 12px;
+
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+
+    overflow: hidden;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    padding: 20px;
+
+    border-bottom: 1px solid #eeeeee;
+}
+
+.modal-header h2 {
+    margin: 0;
+
+    font-size: 18px;
+    font-weight: 700;
+
+    color: #181818;
+}
+
+.modal-header p {
+    margin: 5px 0 0 0;
+
+    font-size: 12px;
+    color: #706e6b;
+}
+
+.close-button {
+    border: none;
+
+    background: transparent;
+
+    font-size: 24px;
+
+    line-height: 1;
+
+    color: #706e6b;
+
+    cursor: pointer;
+}
+
+.close-button:hover {
+    color: #181818;
+}
+
+.modal-body {
+    padding: 22px;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+
+    gap: 10px;
+
+    padding: 16px 20px;
+
+    border-top: 1px solid #eeeeee;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .document-workspace {
+        grid-template-columns: 1fr;
+    }
+
+    .info-card {
+        width: 100%;
+    }
+}
+
+
+@media (max-width: 700px) {
+
+    .generator-container {
+        padding: 16px;
+    }
+
+    .configuration-card {
+        padding: 18px;
+    }
+
+    .document-preview {
+        padding: 15px;
+    }
+
+    .paper {
+        padding: 20px;
+    }
+
+    .preview-actions {
+        justify-content: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .history-section {
+        padding: 16px;
+    }
+
+    .history-header {
+        align-items: flex-start;
+    }
+
+    .history-count {
+        display: none;
+    }
+
+    .history-row {
+        align-items: flex-start;
+    }
+
+    .history-document-info {
+        padding-right: 10px;
+    }
+
+    .history-actions {
+        min-width: auto;
+
+        padding-left: 15px;
+
+        gap: 6px;
+    }
+}

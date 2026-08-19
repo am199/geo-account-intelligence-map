@@ -1,0 +1,18 @@
+.panel {
+    padding: 1rem 0;
+}
+.muted {
+    color: #5c5c5c;
+}
+.events {
+    display: grid;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+.event {
+    border: 1px solid #d8dde6;
+    border-radius: 6px;
+    padding: 0.75rem;
+    display: grid;
+    gap: 0.25rem;
+}

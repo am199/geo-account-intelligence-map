@@ -1,0 +1,30 @@
+<template>
+    <section class="panel">
+        <lightning-combobox label="Object" value={objectType} options={objectOptions} onchange={handleObjectType}></lightning-combobox>
+
+        <template if:true={isAccount}>
+            <lightning-input label="Account name" value={accountName} onchange={handleAccountName}></lightning-input>
+            <lightning-input label="Website" value={website} onchange={handleWebsite}></lightning-input>
+        </template>
+
+        <template if:false={isAccount}>
+            <div class="inline">
+                <lightning-input label="First name" value={firstName} onchange={handleFirstName}></lightning-input>
+                <lightning-input label="Last name" value={lastName} onchange={handleLastName}></lightning-input>
+                <lightning-input label="Email" value={email} onchange={handleEmail}></lightning-input>
+            </div>
+        </template>
+
+        <div class="actions">
+            <lightning-button variant="brand" label="Find Duplicates" onclick={findDuplicates}></lightning-button>
+        </div>
+
+        <lightning-datatable
+            key-field="recordId"
+            data={candidates}
+            columns={columns}
+            max-row-selection="2"
+            onrowselection={handleSelection}>
+        </lightning-datatable>
+    </section>
+</template>

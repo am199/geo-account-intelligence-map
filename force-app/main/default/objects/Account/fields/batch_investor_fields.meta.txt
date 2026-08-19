@@ -1,0 +1,25 @@
+Planned field metadata files to create (defaults applied):
+1) Portfolio_Size__c (Number 9,0)
+2) Average_Deal_Size__c (Currency 16,2)
+3) Investment_Stage_Focus__c (Multiselect Picklist)
+4) Geographic_Focus__c (Multiselect Picklist)
+5) Sector_Focus__c (Multiselect Picklist)
+6) Last_Investment_Date__c (Date)
+7) Investor_Health_Score__c (Formula Number 3,0) placeholder: 0
+8) Engagement_Score__c (Number 9,0) (Calculated via Apex later)
+9) Stock_Ticker__c (Text 50)
+10) Current_Stock_Price__c (Currency 16,2)
+11) AUM_Assets_Under_Management__c (Currency 18,2)
+12) Decision_Making_Timeline__c (Number 9,0)
+13) Preferred_Communication_Channel__c (Picklist)
+14) Next_Review_Date__c (Date)
+15) Risk_Level__c (Picklist)
+16) LinkedIn_Profile__c (Url)
+17) Website__c (Url)
+
+Picklist values:
+- Investment_Stage_Focus__c (multi): Seed; Series A; Series B; Series C+
+- Geographic_Focus__c (multi): North America; Europe; Asia
+- Sector_Focus__c (multi): FinTech; HealthTech; SaaS; AI/ML
+- Preferred_Communication_Channel__c: Email; Phone; In-Person
+- Risk_Level__c: Low; Medium; High

@@ -1,4 +1,6 @@
-# Geo Account Intelligence Map
+Geo Account Intelligence Map
+<img width="3008" height="1286" alt="image" src="https://github.com/user-attachments/assets/98ac3e03-ef38-4f22-9a7c-a1894e667ec3" />
+
 
 A Salesforce dashboard that puts accounts and opportunities on a map, so sales teams can see **where their accounts are, where the pipeline is, and what's happening around them**.
 
